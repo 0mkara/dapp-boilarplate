@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { Provider } from 'react-redux';
+import App from 'pages/App';
+import Web3Provider from 'components/Web3Provider';
+import store from './state';
 import reportWebVitals from './reportWebVitals';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Web3Provider>
+        <App />
+      </Web3Provider>
+    </Provider>
   </React.StrictMode>
 );
 
