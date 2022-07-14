@@ -1,10 +1,10 @@
+import { useMemo } from 'react'
 import { Currency, Token } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import { useCurrencyFromMap, useTokenFromMapOrNetwork } from './useCurrency'
-import { useMemo } from 'react'
 
 import { useAllLists, useCombinedActiveList, useInactiveListUrls } from '../state/lists/hooks'
-import { useUserAddedTokens } from '../state/user/hooks'
+import { useUserAddedTokens } from 'state/user/hooks'
 import { TokenAddressMap, useUnsupportedTokenList } from './../state/lists/hooks'
 
 // reduce token map into standard address <-> Token mapping, optionally include user added tokens

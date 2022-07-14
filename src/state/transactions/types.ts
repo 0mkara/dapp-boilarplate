@@ -1,6 +1,6 @@
 import { TradeType } from '@uniswap/sdk-core'
 
-interface SerializableTransactionReceipt {
+export interface SerializableTransactionReceipt {
   to: string
   from: string
   contractAddress: string

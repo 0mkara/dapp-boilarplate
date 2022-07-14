@@ -1,7 +1,7 @@
 import { useWeb3React } from '@web3-react/core'
 import useBlockNumber from "./useBlockNumber";
-import multicall from "../state/multicall";
-import { SkipFirst } from "../types/tuple";
+import multicall from "state/multicall";
+import { SkipFirst } from "types/tuple";
 
 export type { CallStateResult } from "@uniswap/redux-multicall"; // re-export for convenience
 export { NEVER_RELOAD } from "@uniswap/redux-multicall"; // re-export for convenience

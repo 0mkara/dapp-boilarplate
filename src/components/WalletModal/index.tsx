@@ -15,10 +15,10 @@ import styled from 'styled-components/macro'
 import MetamaskIcon from '../../assets/images/metamask.png'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { SUPPORTED_WALLETS } from 'constants/wallet'
-import { useModalIsOpen, useToggleWalletModal } from '../../state/application/hooks'
-import { ApplicationModal } from '../../state/application/reducer'
-import { ExternalLink, ThemedText } from '../../theme'
-import { isMobile } from '../../utils/userAgent'
+import { useModalIsOpen, useToggleWalletModal } from 'state/application/hooks'
+import { ApplicationModal } from 'state/application/reducer'
+import { ExternalLink, ThemedText } from 'theme'
+import { isMobile } from 'utils/userAgent'
 import AccountDetails from '../AccountDetails'
 import { LightCard } from '../Card'
 import Modal from '../Modal'
@@ -151,14 +151,6 @@ export default function WalletModal({
   const tryActivation = useCallback(
     async (connector: Connector) => {
       const connectionType = getConnection(connector).type
-
-      // log selected wallet
-      sendEvent({
-        category: 'Wallet',
-        action: 'Change Wallet',
-        label: connectionType,
-      })
-
       try {
         // Fortmatic opens it's own modal on activation to log in. This modal has a tabIndex
         // collision into the WalletModal, so we special case by closing the modal.
@@ -173,7 +165,7 @@ export default function WalletModal({
         await connector.activate()
 
         dispatch(updateSelectedWallet({ wallet: connectionType }))
-      } catch (error) {
+      } catch (error: any) {
         console.debug(`web3-react connection error: ${error}`)
         dispatch(updateConnectionError({ connectionType, error: error.message }))
       }

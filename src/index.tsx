@@ -5,6 +5,11 @@ import App from 'pages/App';
 import Web3Provider from 'components/Web3Provider';
 import store from './state';
 import reportWebVitals from './reportWebVitals';
+import { BlockNumberProvider } from 'hooks/useBlockNumber'
+import { MulticallUpdater } from "state/multicall";
+import TransactionUpdater from 'state/transactions/updater';
+import ThemeProvider, { ThemedGlobalStyle } from './theme';
+import { LanguageProvider } from './i18n'
 
 
 const root = ReactDOM.createRoot(
@@ -13,9 +18,18 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Web3Provider>
-        <App />
-      </Web3Provider>
+      <LanguageProvider>
+        <Web3Provider>
+          <BlockNumberProvider>
+            <MulticallUpdater />
+            <TransactionUpdater />
+            <ThemeProvider>
+              <ThemedGlobalStyle />
+              <App />
+            </ThemeProvider>
+          </BlockNumberProvider>
+        </Web3Provider>
+      </LanguageProvider>
     </Provider>
   </React.StrictMode>
 );

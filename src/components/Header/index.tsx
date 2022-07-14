@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { Trans } from '@lingui/macro'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
@@ -9,11 +10,12 @@ import { useNativeCurrencyBalances } from 'state/connection/hooks'
 import { useDarkModeManager } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 import { isChainAllowed } from 'utils/switchChain'
+import { ThemeContext } from 'styled-components/macro'
 
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg'
 import Menu from '../Menu'
 import Web3Status from '../Web3Status'
-import NetworkSelector from './NetworkSelector'
+// import NetworkSelector from './NetworkSelector'
 
 const HeaderFrame = styled.div<{ showBackground: boolean }>`
   display: grid;
@@ -144,7 +146,7 @@ export default function Header() {
       </Title>
       <HeaderControls>
         <HeaderElement>
-          <NetworkSelector />
+          {/* <NetworkSelector /> */}
         </HeaderElement>
         <HeaderElement>
           <AccountElement active={!!account}>
